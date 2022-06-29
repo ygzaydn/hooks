@@ -15,6 +15,15 @@ function App() {
             <span onClick={() => navigate("/usefetch")} className="hook">
                 useFetch
             </span>
+            <span onClick={() => navigate("/usewindow")} className="hook">
+                useWindow
+            </span>
+            <span onClick={() => navigate("/usegeolocation")} className="hook">
+                useGeoLocation
+            </span>
+            <span onClick={() => navigate("/useurlparser")} className="hook">
+                useURLParser
+            </span>
         </div>
     );
 }

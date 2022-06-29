@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 const useFetch = (url) => {
+    const flag = useRef(false);
+
     const [info, setInfo] = useState({
         data: null,
         error: null,
@@ -9,12 +11,15 @@ const useFetch = (url) => {
     });
 
     useEffect(() => {
-        fetchData(url);
-    }, [url]);
+        if (flag.current) {
+            return;
+        } else {
+            fetchData(url);
+        }
+        flag.current = true;
+    }, []);
 
     const fetchData = async (url) => {
-        setInfo((prev) => ({ ...prev, loading: true }));
-
         try {
             const res = await axios.get(url);
             if (res) {

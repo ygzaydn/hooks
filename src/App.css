@@ -4,3 +4,7 @@
   padding: .5rem;
   cursor: pointer;
 }
+
+.App-header {
+  margin:2rem;
+}

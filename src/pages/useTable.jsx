@@ -7,7 +7,7 @@ const UseTablePage = () => {
         rows,
         page,
         pagination: { increasePage, decreasePage, maxPage, pageNumber },
-    } = useTable({ data, page: 3 });
+    } = useTable({ data, page: 10 });
     return (
         <div>
             <table>
@@ -30,12 +30,22 @@ const UseTablePage = () => {
             </table>
             {page && (
                 <div>
-                    <button onClick={() => decreasePage()}>Decrease</button>
+                    <button
+                        disabled={pageNumber === 1}
+                        onClick={() => decreasePage()}
+                    >
+                        Decrease
+                    </button>
                     <span>
                         Page {pageNumber} of {maxPage}
                     </span>
 
-                    <button onClick={() => increasePage()}>Increase</button>
+                    <button
+                        disabled={pageNumber === maxPage}
+                        onClick={() => increasePage()}
+                    >
+                        Increase
+                    </button>
                 </div>
             )}
         </div>
